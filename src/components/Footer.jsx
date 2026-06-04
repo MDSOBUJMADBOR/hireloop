@@ -23,7 +23,7 @@ function Footer() {
               work seriously.
             </p>
 
-            <div className="mt-20 flex gap-3">
+            <div className="mt-20 flex gap-3"> 
               <Link
                 href="#"
                 className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-900 text-gray-300 transition hover:bg-blue-600 hover:text-white"
@@ -89,7 +89,7 @@ function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-500 md:flex-row md:items-center">
-          <p>Copyright 2024 — Programming Hero</p>
+          <p>Copyright 2024 — Hire Loop</p>
 
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white">

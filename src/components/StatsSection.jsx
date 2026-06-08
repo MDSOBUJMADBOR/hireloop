@@ -14,7 +14,7 @@ export default function StatsSection() {
       {/* Globe Image */}
      <div
         className="absolute  bg-no-repeat  "
-        style={{
+        style={{ 
           width: "100%",
           height: "100%",
           backgroundImage: "url('/globee.png')", 

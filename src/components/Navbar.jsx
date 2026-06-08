@@ -9,10 +9,10 @@ export default function Navbar() {
   const navLinks = [
     { label: "Browse Jobs", href: "/jobs" },
     { label: "Companies", href: "/companies" },
-    { label: "For Recruiters", href: "/recruiters" },
+    { label: "For Recruiters", href: "/recruiters" }, 
     { label: "Pricing", href: "/pricing" },
   ];
-
+ 
   return (
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -123,7 +123,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/register"
+              href="/signup"
               className="mt-3 block rounded-xl bg-violet-600 px-4 py-3 text-center font-semibold text-white transition hover:bg-violet-500"
             >
               Get Started

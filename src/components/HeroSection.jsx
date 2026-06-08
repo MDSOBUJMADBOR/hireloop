@@ -6,7 +6,7 @@ export default function HeroSection() {
   const trendingJobs = [
     "Product Designer",
     "AI Engineering",
-    "Dev-ops Engineer",
+    "Dev-ops Engineer", 
   ];
 
   return (
@@ -19,7 +19,7 @@ export default function HeroSection() {
 
             <span className="text-2xl font-bold">50,000+</span>
 
-            <span className="uppercase tracking-[0.25em] text-zinc-400">
+            <span className="uppercase tracking-[0.25em] text-zinc-400"> 
               New Jobs This Month
             </span>
           </div>

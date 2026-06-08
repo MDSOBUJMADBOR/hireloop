@@ -48,7 +48,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/register"
+            href="/signup"
             className="rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-500"
           >
             Get Started
@@ -120,7 +120,7 @@ export default function Navbar() {
               className="block rounded-lg px-3 py-3 text-zinc-300 transition hover:bg-zinc-900 hover:text-white"
             >
               Sign In
-            </Link>
+            </Link> 
 
             <Link
               href="/signup"

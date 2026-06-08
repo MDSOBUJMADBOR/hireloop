@@ -1,201 +1,82 @@
 "use client";
 
+import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
 
-import { Button, Card, Input, Alert } from "@heroui/react";
-import { authClient } from "@/lib/auth-client";
+
 
 export default function SignupPage() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const router = useRouter();
+    const [isVisible, setIsVisible] = useState(false);
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
 
-  const handleChange = (field, value) => {
-    setForm((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+ if(data) {
+  router.push("/")
+ }
+ if(!data) {
+  alert("Please fill in all fields");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setError("");
-    setSuccess("");
-
-    if (!form.name.trim()) {
-      setError("Name is required");
-      return;
-    }
-
-    if (!form.email.trim()) {
-      setError("Email is required");
-      return;
-    }
-
-    if (form.password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const result = await authClient.signUp.email({
-        name: form.name,
-        email: form.email,
-        password: form.password,
-      });
-
-      if (result?.error) {
-        setError(result.error.message || "Failed to create account");
-        return;
-      }
-
-      setSuccess("Account created successfully!");
-
-      setForm({
-        name: "",
-        email: "",
-        password: "",
-      });
-    } catch (err) {
-      console.error(err);
-
-      setError(
-        err?.message ||
-          "Something went wrong. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
+}
+}
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-4 py-10">
-      <Card className="w-full max-w-md shadow-lg">
-    
-          <div className="mb-4">
-            <Link
-              href="/signin"
-              className="text-sm text-primary hover:underline"
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md border border-white  p-8 rounded-2xl shadow-lg">
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Create Account
+        </h1>
+
+        <form onSubmit={handleSubmit}  className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+          
+            className="w-full px-4 py-2 border rounded-lg "
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+           
+            className="w-full px-4 py-2 border rounded-lg "
+            required
+          />
+ <div className="relative">
+          <input
+            type={isVisible ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            
+            className="w-full px-4 py-2 border rounded-lg "
+            required
+          />
+ <Button
+              type="button"
+              onClick={() => setIsVisible(!isVisible)}
+              className="absolute    text-sm text-gray-600 bg-transparent"
             >
-              ← Back to Sign In
-            </Link>
-          </div>
-
-          <div className="mb-6 text-center">
-            <h1 className="text-3xl font-bold">
-              Create Account
-            </h1>
-            <p className="mt-2 text-default-500">
-              Sign up to get started
-            </p>
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-4"
-          >
-            {error && (
-              <Alert
-                color="danger"
-                title="Error"
-                variant="faded"
-              >
-                {error}
-              </Alert>
-            )}
-
-            {success && (
-              <Alert
-                color="success"
-                title="Success"
-                variant="faded"
-              >
-                {success}
-              </Alert>
-            )}
-
-            <Input
-          className="text-red-500"
-              label="Full Name"
-              placeholder="Full Name"
-              variant="bordered"
-              value={form.name}
-              onValueChange={(value) =>
-                handleChange("name", value)
-              }
-              isRequired
-            />
-
-            <Input
-              label="Email"
-              placeholder="
-              Your Email "
-              type="email"
-              variant="bordered"
-              value={form.email}
-              onValueChange={(value) =>
-                handleChange("email", value)
-              }
-              isRequired
-            />
-
-            <Input
-              label="Password"
-              placeholder="Enter password"
-              variant="bordered"
-              type={isVisible ? "text" : "password"}
-              value={form.password}
-              onValueChange={(value) =>
-                handleChange("password", value)
-              }
-              isRequired
-              endContent={
-                <button
-                  type="button"
-                  onClick={() =>
-                    setIsVisible((prev) => !prev)
-                  }
-                  className="text-xs text-default-500"
-                >
-                  {isVisible ? "Hide" : "Show"}
-                </button>
-              }
-            />
-
-            <Button
-              type="submit"
-              color="primary"
-              className="w-full"
-              isLoading={loading}
-            >
-              Create Account
+              {isVisible ? "🙈" : "👁️"}
             </Button>
-          </form>
+         </div>
 
-          <div className="mt-6 text-center text-sm">
-            <span className="text-default-500">
-              Already have an account?
-            </span>{" "}
-            <Link
-              href="/signin"
-              className="font-medium text-primary hover:underline"
-            >
-              Sign In
-            </Link>
-          </div>
-      
-      </Card>
+
+
+          <Button
+            type="submit"            
+            className="w-full border py-2 rounded-lg cursor-pointer"
+          >
+            {/* {loading ? "Creating..." : "Sign Up"} */} 
+            Signup
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

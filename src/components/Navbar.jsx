@@ -41,7 +41,7 @@ export default function Navbar() {
         {/* Desktop Actions */}
         <div className="hidden items-center gap-4 md:flex">
           <Link
-            href="/login"
+            href="/signin"
             className="text-sm font-medium text-zinc-300 transition hover:text-white"
           >
             Sign In
@@ -116,7 +116,7 @@ export default function Navbar() {
 
           <div className="mt-4 border-t border-white/10 pt-4">
             <Link
-              href="/login"
+              href="/signin"
               className="block rounded-lg px-3 py-3 text-zinc-300 transition hover:bg-zinc-900 hover:text-white"
             >
               Sign In

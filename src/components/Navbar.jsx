@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
 
 export default function Navbar() {
+const userData = authClient.useSession();
+const user = userData.data?.user; 
+console.log(user,'user');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navLinks = [
     { label: "Browse Jobs", href: "/jobs" },
     { label: "Companies", href: "/companies" },
@@ -13,7 +17,10 @@ export default function Navbar() {
     { label: "Pricing", href: "/pricing" },
   ];
  
+const handleSignOut = async () => {
+await authClient.signOut();
 
+}
 
   
 
@@ -42,8 +49,10 @@ export default function Navbar() {
           ))}
         </ul>
 
+
+
         {/* Desktop Actions */}
-        <div className="hidden items-center gap-4 md:flex">
+      {!user && (<div className="hidden items-center gap-4 md:flex">
           <Link
             href="/signin"
             className="text-sm font-medium text-zinc-300 transition hover:text-white"
@@ -57,7 +66,15 @@ export default function Navbar() {
           >
             Get Started
           </Link>
-        </div>
+        </div>) }
+      {user && (<div className="hidden items-center gap-4 md:flex">
+  <Button onClick={handleSignOut}>
+  Sign Out
+</Button>
+         
+        </div>) }
+
+
 
         {/* Mobile Toggle */}
         <button
@@ -118,7 +135,9 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <div className="mt-4 border-t border-white/10 pt-4">
+
+
+          {!user  && <div className="mt-4 border-t border-white/10 pt-4">
             <Link
               href="/signin"
               className="block rounded-lg px-3 py-3 text-zinc-300 transition hover:bg-zinc-900 hover:text-white"
@@ -132,7 +151,15 @@ export default function Navbar() {
             >
               Get Started
             </Link>
-          </div>
+          </div>}
+           {user && (<div className=" items-center gap-4 md:flex">
+       <Button onClick={handleSignOut}>
+  Sign Out
+</Button>
+         
+        </div>) }
+
+          
         </div>
       </div>
     </nav>

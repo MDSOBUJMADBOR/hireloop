@@ -13,6 +13,10 @@ export default function Navbar() {
     { label: "Pricing", href: "/pricing" },
   ];
  
+
+
+  
+
   return (
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -32,7 +36,7 @@ export default function Navbar() {
                 href={link.href}
                 className="text-sm font-medium text-zinc-300 transition-colors hover:text-white"
               >
-                {link.label}
+                {link.label} 
               </Link>
             </li>
           ))}
@@ -45,7 +49,7 @@ export default function Navbar() {
             className="text-sm font-medium text-zinc-300 transition hover:text-white"
           >
             Sign In
-          </Link>
+          </Link> 
 
           <Link
             href="/signup"

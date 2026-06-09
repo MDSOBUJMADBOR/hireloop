@@ -2,35 +2,33 @@
 
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { authClient, signUp } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function SignupPage() {
   const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+e.preventDefault();
+const name = e.target.name.value;
+const email = e.target.email.value;
+const password = e.target.password.value;
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-console.log(data,'data');
-    if (!data.name || !data.email || !data.password) {
-      alert("সব ফিল্ড পূরণ করো");
-      return;
-    }
+const {data,error} = await authClient.signUp.email({  
+name,
+email,
+password,
+})
+if(!error) {
+ router.push("/")
+}
+console.log(data,error);
 
-    const {data1, error} = await authClient.signUp.email({
-      email: data.email,
-      password: data.password,
-      name: data.name,
-    });
-
-    if (res.error) {
-      alert(res.error.message);
-    } else {
-      alert("Signup successful");
-      router.push("/");
-    }
-  };
+if(error){
+  toast.error(error.message);
+}
+}
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 bg-amber-400">
@@ -74,12 +72,9 @@ console.log(data,'data');
 
         <p className="text-sm text-center mt-4 text-gray-600">
           Have an account?{" "}
-          <span
-            onClick={() => router.push("/signin")}
-            className="text-blue-500 cursor-pointer"
-          >
+          <Link href="/signin" className="text-blue-500 cursor-pointer">
             Sign In
-          </span>
+          </Link>
         </p>
       </div>
     </div>

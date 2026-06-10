@@ -10,10 +10,17 @@ await client.connect();
 const db = client.db(process.env.AUTH_DB_NAME || "auth");
 
 export const auth = betterAuth({
+    emailAndPassword: { 
+    enabled: true,   
+  },
   database: mongodbAdapter(db, {
     client
   }),
-  emailAndPassword: { 
-    enabled: true,   
-  }, 
+user: {
+  additionalFields: {
+role: {
+  default: "seeker"
+}
+    }
+  }
 }); 

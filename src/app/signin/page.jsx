@@ -5,6 +5,7 @@ import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
+
 export default function SigninPage() {
   const router = useRouter();
 
@@ -28,7 +29,7 @@ export default function SigninPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-white">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gray-400">
       <div className="w-full max-w-md border border-white p-8 rounded-2xl shadow-lg bg-black">
         <h1 className="text-2xl font-bold text-center mb-6">
           Welcome Back

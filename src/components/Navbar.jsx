@@ -8,7 +8,7 @@ import { Button } from "@heroui/react";
 export default function Navbar() {
 const userData = authClient.useSession();
 const user = userData.data?.user; 
-console.log(user,'user');
+// console.log(user,'user');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
     { label: "Browse Jobs", href: "/jobs" },
@@ -68,6 +68,7 @@ await authClient.signOut();
           </Link>
         </div>) }
       {user && (<div className="hidden items-center gap-4 md:flex">
+        <h2>Welcome, {user.name}!</h2>
   <Button onClick={handleSignOut}>
   Sign Out
 </Button>
@@ -153,6 +154,7 @@ await authClient.signOut();
             </Link>
           </div>}
            {user && (<div className=" items-center gap-4 md:flex">
+        <h2>Welcome, {user.name}!</h2>
        <Button onClick={handleSignOut}>
   Sign Out
 </Button>

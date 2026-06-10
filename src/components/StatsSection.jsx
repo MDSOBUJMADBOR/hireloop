@@ -13,7 +13,7 @@ export default function StatsSection() {
       {/* Background Stars */}
       {/* Globe Image */}
      <div
-        className="absolute  bg-no-repeat  "
+        className="absolute  bg-no-repeat  " 
         style={{ 
           width: "100%",
           height: "100%",

@@ -11,7 +11,7 @@ const RecruiterDashboardHomePage = () => {
     if (isPending) {
         return <div className="text-white p-6">Loading...</div>;
     }
-
+ 
     const recruiterStats = [
         { title: "Total Job Posts", value: "48", icon: LayoutHeaderCellsLarge }, // ফিক্সড আইকন নাম
         { title: "Total Applicants", value: "1,284", icon: Persons },

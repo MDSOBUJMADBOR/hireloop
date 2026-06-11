@@ -31,7 +31,7 @@ export default function CreateJobForm({ companyData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!canPost) return;
-
+const formElement = e.currentTarget;
     setLoading(true);
     setFormError("");
 
@@ -48,6 +48,7 @@ export default function CreateJobForm({ companyData }) {
     try {
       console.log("Submitting to API:", finalPayload);
       // await axios.post('/api/jobs', finalPayload);
+      formElement.reset();
     } catch (err) {
       setFormError("Something went wrong. Please try again.");
     } finally {

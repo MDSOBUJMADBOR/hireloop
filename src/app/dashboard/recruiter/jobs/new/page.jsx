@@ -10,8 +10,11 @@ import {
   Label,       
   ListBox,     
 } from "@heroui/react";
+import { createJob } from '@/lib/actions/jobs';
+import { useRouter } from 'next/navigation';
 
 export default function CreateJobForm({ companyData }) {
+   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -44,11 +47,19 @@ const formElement = e.currentTarget;
       status: "active",
       createdAt: new Date().toISOString()
     };
+   
+
 
     try {
+      const res = await createJob(finalPayload);
+      if(res.insertedId) {
+        alert("Job posted successfully!");
+         router.push('/dashboard/recruiter');
+      }
       console.log("Submitting to API:", finalPayload);
       // await axios.post('/api/jobs', finalPayload);
       formElement.reset();
+     redirect('/dashboard/recruiter/jobs');
     } catch (err) {
       setFormError("Something went wrong. Please try again.");
     } finally {

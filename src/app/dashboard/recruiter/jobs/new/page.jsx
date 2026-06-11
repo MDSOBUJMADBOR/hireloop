@@ -43,7 +43,7 @@ const formElement = e.currentTarget;
     
     const finalPayload = {
       ...jobData,
-      companyId: company.id,
+      companyId: 'company_123',
       status: "active",
       createdAt: new Date().toISOString()
     };

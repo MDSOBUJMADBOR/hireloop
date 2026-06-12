@@ -12,6 +12,7 @@ import {
   Chip 
 } from "@heroui/react";
 import { ArrowUpToLine, Pencil, Factory, Globe, MapPin, Persons, Layers, FileText } from "@gravity-ui/icons";
+import { createCompany } from "@/lib/actions/companies";
 
 const IMGBB_API_KEY = process.env.NEXT_PUBLIC_IMAGE_UPLOAD_API; 
 
@@ -93,6 +94,13 @@ console.log('company',company);
       status: company ? company.status : "Pending", 
     };
     console.log(payload,'payload');
+
+const payloads = await createCompany(payload);
+console.log(payloads,'payloads');
+if(payloads){
+alert('Company created successfully!');
+}
+
 
     if (!payload.logo) {
       setFormError("Please upload a company logo.");

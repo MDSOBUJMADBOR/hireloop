@@ -129,7 +129,7 @@ alert('Company created successfully!');
   };
 
   // CASE 1: No Company Registered
-  if (!company && !isEditing) {
+  if (!company?._id && !isEditing) {
     return (
       <div className="flex flex-col items-center justify-center p-12 bg-[#09090b] min-h-[400px] border border-[#1f1f1f] rounded-xl text-center">
         <div className="w-16 h-16 rounded-full bg-[#161616] border border-[#262626] flex items-center justify-center mb-4 text-[#71717a]">

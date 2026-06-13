@@ -33,7 +33,7 @@ export default function PostJobForm({  company }) {
   const maxLimit = planLimits[company?.plan] || 3;
   const isLimitReached = company?.activeJobCount  >= maxLimit;
   const canPost = company?.isApproved && !isLimitReached;
-console.log("canPost:", canPost);
+// console.log("canPost:", canPost); 
 
 
   const handleSubmit = async (e) => {

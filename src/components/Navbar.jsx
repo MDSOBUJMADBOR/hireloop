@@ -9,7 +9,7 @@ export default function Navbar() {
 const userData = authClient.useSession();
 const user = userData.data?.user; 
 // console.log(user,'user');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const navLinks = [
     { label: "Browse Jobs", href: "/jobs" },
     { label: "Companies", href: "/companies" },

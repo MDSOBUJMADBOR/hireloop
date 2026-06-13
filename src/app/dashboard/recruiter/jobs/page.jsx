@@ -1,11 +1,12 @@
 import { Button, Table } from "@heroui/react";
 import { getCompanyJobs } from '@/lib/api/jobs';
 import React from 'react';
+import { getLoggedInUserCompany } from "@/lib/api/companies";
 
 
 const RecruiterJobs = async () => {
-    const companyId = 'company_123'; 
-    const jobs = await getCompanyJobs(companyId); 
+    const company = await getLoggedInUserCompany(); 
+    const jobs = await getCompanyJobs(company?._id) || []; 
     
     console.log('Company Jobs:', jobs);
 

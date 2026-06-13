@@ -32,9 +32,9 @@ const selectTrigger = "w-full bg-[#161616] border border-[#262626] hover:border-
 const popoverStyle = "bg-[#121212] border border-[#262626] rounded-lg p-1 min-w-[200px]";
 const listItemStyle = "text-[#e4e4e7] hover:bg-[#1c1c1c] focus:bg-[#1c1c1c] rounded-md px-2 py-1.5 text-sm cursor-pointer outline-none transition-colors data-[selected=true]:bg-white data-[selected=true]:text-black";
 
-export default function CompanyProfile({ recruiter }) {
+export default function CompanyProfile({ recruiter , recruiterCompany}) {
 
-  const [company, setCompany] = useState(null); 
+  const [company, setCompany] = useState(recruiterCompany); 
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [logoUploading, setLogoUploading] = useState(false);

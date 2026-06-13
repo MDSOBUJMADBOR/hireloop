@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <HeroSection></HeroSection>
       <StatsSection></StatsSection>
-        <ToastContainer />
+        <ToastContainer /> 
     </div>
   );
 }

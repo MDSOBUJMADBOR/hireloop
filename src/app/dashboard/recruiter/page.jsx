@@ -19,7 +19,7 @@ const RecruiterDashboardHomePage = () => {
         { title: "Jobs Closed", value: "32", icon: CircleCheck }
     ];
 
-    const user = session?.user;
+    const user = session?.user; 
 
     return (
         <div className="p-6 bg-[#0a0a0a] min-h-screen text-white flex flex-col gap-6">

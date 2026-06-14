@@ -16,8 +16,5 @@ const res = await fetch(`${baseUrl}${path}`, {
     },
     body: JSON.stringify(data)
   });
-
-  
-
   return res.json();
 }

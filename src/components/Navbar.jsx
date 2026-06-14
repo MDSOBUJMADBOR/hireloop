@@ -14,7 +14,7 @@ const user = userData.data?.user;
     { label: "Browse Jobs", href: "/jobs" },
     { label: "Companies", href: "/companies" },
     { label: "For Recruiters", href: "/recruiters" }, 
-    { label: "Pricing", href: "/pricing" },
+    { label: "Pricing", href: "/pricing" }, 
   ];
  
 const handleSignOut = async () => {

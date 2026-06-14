@@ -180,7 +180,7 @@ export default function JobPage() {
             No jobs match your search criteria.
           </p>
         )}
-      </div>
+      </div> 
 
     </div>
   );
